@@ -8,7 +8,7 @@ import java.util.Comparator;
 
 @SuppressWarnings("unchecked")
 public class Arrivals {
-    static ArrayList<Trip> tripsByArival = new ArrayList<Trip>();
+    static ArrayList<Trip> tripsByArrival = new ArrayList<Trip>();
     static ArrayList<Trip> tripsByID = new ArrayList<Trip>();
 
     Arrivals(String stopTimesFile) throws FileNotFoundException {
@@ -40,7 +40,7 @@ public class Arrivals {
         tripsByID = (ArrayList<Trip>) trips.clone();
         // sort by arrival time
         trips.sort((o1, o2) -> ((Integer) o1.arrivalInSeconds).compareTo((Integer) o2.arrivalInSeconds));
-        tripsByArival = (ArrayList<Trip>) trips.clone();
+        tripsByArrival = (ArrayList<Trip>) trips.clone();
     }
 
     /**
@@ -76,21 +76,21 @@ public class Arrivals {
             }
         };
         // index of first found trip with that time
-        int index = Collections.binarySearch(tripsByArival, searchTime, compareTripTime);
-        tripList.add(tripsByArival.get(index));
+        int index = Collections.binarySearch(tripsByArrival, searchTime, compareTripTime);
+        tripList.add(tripsByArrival.get(index));
 
         boolean runSearch = true;
         int indexUp = index;
         int indexDown = index;
         // keeps looping and incrementing up and down to get all trips
         while (runSearch) {
-            indexUp = index++;
-            indexDown = index--;
-            if (indexUp < tripsByArival.size() && indexDown >= 0) {
-                if (tripsByArival.get(indexUp).arrivalInSeconds == searchTime.arrivalInSeconds) {
-                    tripList.add(tripsByArival.get(indexUp));
-                } else if (tripsByArival.get(indexDown).arrivalInSeconds == searchTime.arrivalInSeconds) {
-                    tripList.add(tripsByArival.get(indexDown));
+            indexUp++;
+            indexDown--;
+            if (indexUp < tripsByArrival.size() || indexDown > 0) {
+                if (tripsByArrival.get(indexUp).arrivalInSeconds == searchTime.arrivalInSeconds) {
+                    tripList.add(tripsByArrival.get(indexUp));
+                } else if (tripsByArrival.get(indexDown).arrivalInSeconds == searchTime.arrivalInSeconds) {
+                    tripList.add(tripsByArrival.get(indexDown));
                 } else {
                     runSearch = false;
                 }

@@ -1,8 +1,7 @@
-import java.util.Comparator;
 
 //class that creates trip object when used to store all trips
 //when reading in files.
-public class Trip implements Comparator<Trip> {
+public class Trip {
     int arrivalInSeconds;
     // Array stores info on the trip
     String[] infoArr;
@@ -39,11 +38,6 @@ public class Trip implements Comparator<Trip> {
         seconds = Integer.parseInt(time[2]);
         if (seconds > 59 || seconds < 0)
             throw new IllegalArgumentException("Departure seconds not in range of 0-59");
-    }
-
-    @Override
-    public int compare(Trip a, Trip b) {
-        return a.getArrivalInSeconds() - b.getArrivalInSeconds();
     }
 
     int getID() {

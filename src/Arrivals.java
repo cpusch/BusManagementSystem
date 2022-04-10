@@ -79,23 +79,26 @@ public class Arrivals {
         int index = Collections.binarySearch(tripsByArrival, searchTime, compareTripTime);
         tripList.add(tripsByArrival.get(index));
 
-        boolean runSearch = true;
+        boolean runSearchUp = true, runSearchDown = true;
         int indexUp = index;
         int indexDown = index;
         // keeps looping and incrementing up and down to get all trips
-        while (runSearch) {
+        while (runSearchUp || runSearchDown) {
             indexUp++;
             indexDown--;
-            if (indexUp < tripsByArrival.size() || indexDown > 0) {
+            if (indexUp < tripsByArrival.size()) {
                 if (tripsByArrival.get(indexUp).arrivalInSeconds == searchTime.arrivalInSeconds) {
                     tripList.add(tripsByArrival.get(indexUp));
-                } else if (tripsByArrival.get(indexDown).arrivalInSeconds == searchTime.arrivalInSeconds) {
+                } else {
+                    runSearchUp = false;
+                }
+            }
+            if (indexDown >= 0) {
+                if (tripsByArrival.get(indexDown).arrivalInSeconds == searchTime.arrivalInSeconds) {
                     tripList.add(tripsByArrival.get(indexDown));
                 } else {
-                    runSearch = false;
+                    runSearchDown = false;
                 }
-            } else {
-                runSearch = false;
             }
         }
         // comparator to sort list of trips by trip ID

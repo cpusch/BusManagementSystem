@@ -11,10 +11,10 @@ public class Arrivals {
     static ArrayList<Trip> tripsByArival = new ArrayList<Trip>();
     static ArrayList<Trip> tripsByID = new ArrayList<Trip>();
 
-    Arrivals(String stopFile) throws FileNotFoundException {
+    Arrivals(String stopTimesFile) throws FileNotFoundException {
         ArrayList<Trip> trips = new ArrayList<Trip>();
 
-        File file = new File(stopFile);
+        File file = new File(stopTimesFile);
 
         try {
             Scanner scanner = new Scanner(file);
@@ -43,7 +43,7 @@ public class Arrivals {
      * @param input
      * @return returns list of trips for the given arrival time
      */
-    public static ArrayList<Trip> getArrivalTimes(String input) {
+    public ArrayList<Trip> getTripsFromTime(String input) {
         ArrayList<Trip> tripList = new ArrayList<Trip>();
         String[] time = input.split(":");
         if (time.length > 3 || time.length < 3)

@@ -1,4 +1,3 @@
-
 //class that creates trip object when used to store all trips
 //when reading in files.
 public class Trip {

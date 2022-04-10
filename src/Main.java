@@ -7,6 +7,9 @@ public class Main {
         try {
             Arrivals test = new Arrivals(stop_timesPath);
             ArrayList<Trip> trips = test.getTripsFromTime("12:00:00");
+            for (Trip trip : trips) {
+                System.out.println(trip.toString());
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace(System.out);
         }

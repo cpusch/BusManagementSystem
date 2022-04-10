@@ -86,7 +86,7 @@ public class Arrivals {
         while (runSearch) {
             indexUp = index++;
             indexDown = index--;
-            if (indexUp < tripsByArival.size() || indexDown > 0) {
+            if (indexUp < tripsByArival.size() && indexDown >= 0) {
                 if (tripsByArival.get(indexUp).arrivalInSeconds == searchTime.arrivalInSeconds) {
                     tripList.add(tripsByArival.get(indexUp));
                 } else if (tripsByArival.get(indexDown).arrivalInSeconds == searchTime.arrivalInSeconds) {

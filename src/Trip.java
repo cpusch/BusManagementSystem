@@ -74,4 +74,8 @@ public class Trip {
     String getShapeDistTraveled() {
         return infoArr[8];
     }
+
+    int getArrivalInSeconds() {
+        return arrivalInSeconds;
+    }
 }

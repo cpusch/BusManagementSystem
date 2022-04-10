@@ -6,7 +6,7 @@ public class Trip {
     String[] infoArr;
 
     Trip(String info) throws IllegalArgumentException {
-        infoArr = info.split("\\s*,\\s*");
+        infoArr = info.split(",");
 
         // check arrival time in expected range
         String[] time = getArrivalTime().split(":");

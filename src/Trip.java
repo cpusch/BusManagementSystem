@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 //class that creates trip object when used to store all trips
 //when reading in files.
 public class Trip {
@@ -6,7 +10,17 @@ public class Trip {
     String[] infoArr;
 
     Trip(String info) throws IllegalArgumentException {
-        infoArr = info.split(",");
+        infoArr = new String[9];
+        String[] temp = info.split("\\s*,\\s*");
+        // if the last element was not added due to formatting add it here
+        if (temp.length == 8) {
+            for (int i = 0; i < temp.length; i++) {
+                infoArr[i] = temp[i];
+            }
+            infoArr[8] = "0";
+        } else {
+            infoArr = temp;
+        }
 
         // check arrival time in expected range
         String[] time = getArrivalTime().split(":");

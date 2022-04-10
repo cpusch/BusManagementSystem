@@ -21,10 +21,15 @@ public class Arrivals {
 
             // skip headers
             String line = scanner.nextLine();
-
+            line = scanner.nextLine();
             while (scanner.hasNextLine()) {
-                line = scanner.nextLine();
-                trips.add(new Trip(line));
+                try {
+                    line = scanner.nextLine();
+                    trips.add(new Trip(line));
+                } catch (IllegalArgumentException e) {
+                    // System.out.println("Error in Date");
+                }
+
             }
             scanner.close();
         } catch (FileNotFoundException e) {
@@ -61,7 +66,7 @@ public class Arrivals {
             throw new IllegalArgumentException("Seconds not in range of 0-59");
 
         // create temporary trip object to be able to search for the desired time.
-        Trip searchTime = new Trip("0,0,0,0,0,0,0,0,0");
+        Trip searchTime = new Trip("0,00:00:00,00:00:00,0,0,0,0,0,0");
         searchTime.arrivalInSeconds = seconds + (mins * 60) + (3600 * hours);
         // comparator so that two trips can be compared by their travel time
         Comparator<Trip> compareTripTime = new Comparator<Trip>() {

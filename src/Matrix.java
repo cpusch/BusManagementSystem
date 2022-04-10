@@ -2,11 +2,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class CreateMatrix {
+public class Matrix {
     int numNodes;
     int[][] matrix;
 
-    CreateMatrix(String stopTimeFiles, String transfersFiles) {
+    Matrix(String stopTimeFiles, String transfersFiles) {
         File stopTimes = new File(stopTimeFiles);
         File transfers = new File(transfersFiles);
         matrix = new int[12479][12479];

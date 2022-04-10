@@ -74,4 +74,11 @@ public class Trip {
     String getShapeDistTraveled() {
         return infoArr[8];
     }
+
+    @Override
+    public String toString() {
+        return getID() + "    " + getArrivalTime() + "    " + getDepartureTime() + "    " +
+                getStopID() + "    " + getStopHeadsign() + "    " + getPickupType() + "    " +
+                getDropOffType() + "    " + getShapeDistTraveled();
+    }
 }

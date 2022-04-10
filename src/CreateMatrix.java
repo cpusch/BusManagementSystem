@@ -57,10 +57,11 @@ public class CreateMatrix {
                 if (lineInfo.length == 3) {
                     matrix[stop1][stop2] = 2;
                 } else {
-                    matrix[stop1][stop2] = Integer.parseInt(lineInfo[3]);
+                    matrix[stop1][stop2] = Integer.parseInt(lineInfo[3]) / 100;
                 }
             }
         } catch (FileNotFoundException e) {
             System.out.println("File was not found");
         }
     }
+}

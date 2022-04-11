@@ -13,7 +13,10 @@ public class Matrix {
         // set values in matrix to infinity
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
-                matrix[i][j] = Integer.MAX_VALUE;
+                if (i == j)
+                    matrix[i][j] = 0;
+                else
+                    matrix[i][j] = Integer.MAX_VALUE;
             }
         }
 

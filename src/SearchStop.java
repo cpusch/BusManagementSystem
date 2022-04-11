@@ -1,10 +1,12 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class SearchStop {
     TST tst = new TST();
+    HashMap<Integer, String> stopsByID = new HashMap<Integer, String>();
 
     SearchStop(String stopsFile) {
         File file = new File(stopsFile);
@@ -27,6 +29,7 @@ public class SearchStop {
                     stopName += " " + temp;
                     infoArr[2] = stopName;
                 }
+                stopsByID.put(Integer.parseInt(infoArr[0]), stopName);
                 Stop stop = new Stop(infoArr);
                 tst.put(stopName.toLowerCase(), stop);
             }

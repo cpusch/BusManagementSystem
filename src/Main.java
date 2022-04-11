@@ -29,27 +29,22 @@ public class Main {
             System.out.println("    1. Find the shortest path between two bus stops");
             System.out.println("    2. Search for a bus stop");
             System.out.println("    3. Searching for all trips within a given arrival time");
-            System.out.println("    4. Exit program");
-            System.out.print("Please select one of the following options by typing the corresponding number: ");
+            System.out.print(
+                    "Please select one of the following options by typing the corresponding number or type 'quit' to quit: ");
             int selection = 0;
-            try {
-                selection = Integer.parseInt(scanner.nextLine());
-            } catch (Exception e) {
-                System.out.println("\nEnter a valid number!");
-                continue;
-            }
+            String input = scanner.nextLine();
 
-            switch (selection) {
-                case 1:
+            switch (input) {
+                case "1":
                     runShortestPath();
                     break;
-                case 2:
+                case "2":
                     runStopSearch();
                     break;
-                case 3:
+                case "3":
                     runTimeSearch();
                     break;
-                case 4:
+                case "quit":
                     System.out.println("Exiting...");
                     runProgram = false;
                     break;
@@ -168,7 +163,7 @@ public class Main {
 
             System.out.println("Following trips found for inputted time:");
             System.out.println(
-                    "TripID      Arrival Time        Departure Time      StopID      Pickup Type      Shape Dist Traveled");
+                    "TripID      Arrival Time       Departure Time      StopID      Pickup Type      Shape Dist Traveled");
             for (Trip t : trips) {
                 System.out.println(t.toString());
             }

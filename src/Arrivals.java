@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -27,7 +26,7 @@ public class Arrivals {
                     line = scanner.nextLine();
                     trips.add(new Trip(line));
                 } catch (IllegalArgumentException e) {
-                    // System.out.println("Error in Date");
+                    System.out.println("Error in Date");
                 }
 
             }
@@ -52,18 +51,18 @@ public class Arrivals {
         ArrayList<Trip> tripList = new ArrayList<Trip>();
         String[] time = input.split(":");
         if (time.length > 3 || time.length < 3)
-            throw new IllegalArgumentException("Not valid time entered");
+            System.out.println("Not valid time entered");
         int hours = Integer.parseInt(time[0]);
         if (hours > 23 || hours < 0)
-            throw new IllegalArgumentException("Hours not in range of 0-23");
+            System.out.println("Hours not in range of 0-23");
 
         int mins = Integer.parseInt(time[1]);
         if (mins > 59 || mins < 0)
-            throw new IllegalArgumentException("Mins not in range of 0-59");
+            System.out.println("Mins not in range of 0-59");
 
         int seconds = Integer.parseInt(time[2]);
         if (seconds > 59 || seconds < 0)
-            throw new IllegalArgumentException("Seconds not in range of 0-59");
+            System.out.println("Seconds not in range of 0-59");
 
         // create temporary trip object to be able to search for the desired time.
         Trip searchTime = new Trip("0,00:00:00,00:00:00,0,0,0,0,0,0");

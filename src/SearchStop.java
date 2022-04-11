@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SearchStop {
@@ -27,10 +28,31 @@ public class SearchStop {
                     infoArr[2] = stopName;
                 }
                 Stop stop = new Stop(infoArr);
-                tst.put(stopName, stop);
+                tst.put(stopName.toLowerCase(), stop);
             }
         } catch (FileNotFoundException e) {
             System.out.println("Stops file not found");
+        }
+    }
+
+    ArrayList<Stop> getSearchResults(String search) {
+        ArrayList<Stop> searchResult = new ArrayList<Stop>();
+        searchStops(tst.get(search), searchResult);
+        return searchResult;
+    }
+
+    private void searchStops(Node stop, ArrayList<Stop> results) {
+        if (stop == null)
+            return;
+        if (stop.left != null)
+            searchStops(stop.left, results);
+        if (stop.mid != null)
+            searchStops(stop.mid, results);
+        if (stop.left != null)
+            searchStops(stop.left, results);
+        if (stop.left == null && stop.mid == null && stop.right == null) {
+            results.add(stop.stop);
+            return;
         }
     }
 }

@@ -30,4 +30,11 @@ public class Stop {
     public void setParent(Stop stop) {
         this.parentStation = stop;
     }
+
+    @Override
+    public String toString() {
+        return stop_id + "    " + stop_code + "    " + stop_name + "    " +
+                stop_desc + "    " + stop_lat + "    " + stop_lon + "    " +
+                zone_id + "    " + stop_url + "    " + location_type;
+    }
 }

@@ -1,7 +1,7 @@
 
 public class Stop {
     int stop_id;
-    int stop_code;
+    String stop_code;
     String stop_name;
     String stop_desc;
     double stop_lat;
@@ -13,7 +13,7 @@ public class Stop {
 
     Stop(String[] infoArr) {
         stop_id = Integer.parseInt(infoArr[0]);
-        stop_code = Integer.parseInt(infoArr[1]);
+        stop_code = infoArr[1];
         stop_name = infoArr[2];
         stop_desc = infoArr[3];
         stop_lat = Double.parseDouble(infoArr[4]);
@@ -33,7 +33,7 @@ public class Stop {
 
     @Override
     public String toString() {
-        return stop_id + "    " + stop_code + "    " + stop_name + "    " +
+        return stop_id + "    " + stop_code + "    " + stop_name.toUpperCase() + "    " +
                 stop_desc + "    " + stop_lat + "    " + stop_lon + "    " +
                 zone_id + "    " + stop_url + "    " + location_type;
     }

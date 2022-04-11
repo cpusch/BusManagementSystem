@@ -4,6 +4,14 @@ import java.util.Arrays;
 public class ShortestPath {
     public static final int INFINITY = 10000;
 
+    public static void main(String args[]) {
+        String stop_timesPath = "C:/Users/User/Desktop/temp/BusManagementSystem/lib/stop_times.txt";
+        String transfersPath = "C:/Users/User/Desktop/temp/BusManagementSystem/lib/transfers.txt";
+        String stopsPath = "C:/Users/User/Desktop/temp/BusManagementSystem/lib/stops.txt";
+        Matrix test = new Matrix(stop_timesPath, transfersPath);
+        System.out.println(dijkstra(test.matrix, 3184, 1858).toString());
+    }
+
     public static ArrayList<Integer> dijkstra(int[][] matrix, int source, int dest) {
         int numVertex = matrix[0].length;
 
@@ -81,7 +89,7 @@ public class ShortestPath {
         if (vertex == -1) {
             return;
         } else {
-            getPath(vertex, route, index, routePath);
+            getPath(route[vertex], route, index, routePath);
             routePath.add(route[vertex]);
         }
     }

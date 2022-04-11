@@ -11,76 +11,16 @@ public class Stop {
     String location_type;
     Stop parentStation;
 
-    public int getStopID() {
-        return stop_id;
-    }
-
-    public void setStopID(int x) {
-        this.stop_id = x;
-    }
-
-    public int getStopCode() {
-        return stop_code;
-    }
-
-    public void setStopCode(int x) {
-        this.stop_code = x;
-    }
-
-    public String getStopName() {
-        return stop_name;
-    }
-
-    public void setStopName(String x) {
-        this.stop_name = x;
-    }
-
-    public String getStopDesc() {
-        return stop_desc;
-    }
-
-    public void setStopDesc(String x) {
-        this.stop_desc = x;
-    }
-
-    public double getStopLat() {
-        return stop_lat;
-    }
-
-    public void setStopLat(double x) {
-        this.stop_lat = x;
-    }
-
-    public double getStopLon() {
-        return stop_lon;
-    }
-
-    public void setStopLon(double x) {
-        this.stop_lon = x;
-    }
-
-    public String getZoneID() {
-        return zone_id;
-    }
-
-    public void setZoneID(String x) {
-        this.zone_id = x;
-    }
-
-    public String getStopURL() {
-        return zone_id;
-    }
-
-    public void setStopURL(String x) {
-        this.zone_id = x;
-    }
-
-    public String getLocationType() {
-        return zone_id;
-    }
-
-    public void setLocationType(String x) {
-        this.zone_id = x;
+    Stop(String[] infoArr) {
+        stop_id = Integer.parseInt(infoArr[0]);
+        stop_code = Integer.parseInt(infoArr[1]);
+        stop_name = infoArr[2];
+        stop_desc = infoArr[3];
+        stop_lat = Double.parseDouble(infoArr[4]);
+        stop_lon = Double.parseDouble(infoArr[5]);
+        zone_id = infoArr[6];
+        stop_url = infoArr[7];
+        location_type = infoArr[8];
     }
 
     public Stop getParent() {

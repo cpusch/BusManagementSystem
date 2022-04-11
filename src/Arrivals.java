@@ -26,7 +26,7 @@ public class Arrivals {
                     line = scanner.nextLine();
                     trips.add(new Trip(line));
                 } catch (IllegalArgumentException e) {
-                    System.out.println("Error in Date");
+                    // System.out.println("Error in Date");
                 }
 
             }

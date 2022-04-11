@@ -1,7 +1,10 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ShortestPath {
-    public static int dijkstra(int[][] matrix, int source, int dest) {
+    public static final int INFINITY = 10000;
+
+    public static ArrayList<Integer> dijkstra(int[][] matrix, int source, int dest) {
         int numVertex = matrix[0].length;
 
         int[] shortestDistances = new int[numVertex];
@@ -10,7 +13,7 @@ public class ShortestPath {
         // Initialize all distances as
         // INFINITE and mst[] as false
         for (int nodeIdx = 0; nodeIdx < numVertex; nodeIdx++) {
-            shortestDistances[nodeIdx] = Integer.MAX_VALUE;
+            shortestDistances[nodeIdx] = INFINITY;
             mst[nodeIdx] = false;
         }
 
@@ -28,30 +31,21 @@ public class ShortestPath {
 
         // Find shortest path for all
         // vertices
-        for (int i = 1; i < 8717; i++) {
-            // Pick the minimum distance vertex
-            // from the set of vertices not yet
-            // processed. nearestVertex is
-            // always equal to startNode in
-            // first iteration.
+        for (int i = 1; i < numVertex; i++) {
             int nearestVertex = -1;
-            int shortestDistance = Integer.MAX_VALUE;
+            int shortestDistance = INFINITY;
             for (int nodeIdx = 0; nodeIdx < numVertex; nodeIdx++) {
                 if (!mst[nodeIdx] && shortestDistances[nodeIdx] < shortestDistance) {
                     nearestVertex = nodeIdx;
                     shortestDistance = shortestDistances[nodeIdx];
                 }
             }
-            // Mark the picked vertex as
-            // processed
+
             if (nearestVertex >= 0) {
                 mst[nearestVertex] = true;
             } else {
                 break;
             }
-            // Update dist value of the
-            // adjacent vertices of the
-            // picked vertex.
             for (int nodeIdx = 0; nodeIdx < numVertex; nodeIdx++) {
                 int edgeDistance = matrix[nearestVertex][nodeIdx];
 
@@ -61,14 +55,34 @@ public class ShortestPath {
                 }
             }
         }
-        int startingVertex = source;
-        int endingStop = dest;
         int[] shortestDistance = new int[numVertex];
         int[] parent = new int[numVertex];
         for (int nodeIdx = 0; nodeIdx < numVertex; nodeIdx++) {
             shortestDistance[nodeIdx] = shortestDistances[nodeIdx];
             parent[nodeIdx] = parents[nodeIdx];
         }
-        return matrix[source][dest];
+        if (shortestDistance[dest] == INFINITY) {
+            System.out.println("No shortest path found between [" + source + "] and [" + dest + "]");
+            return null;
+        } else {
+            System.out.println("Shortest path from stop [" + source + "] to [" + dest + "] is a cost of ["
+                    + shortestDistance[dest]
+                    + "] using the following route");
+            ArrayList<Integer> route = new ArrayList<Integer>();
+            getPath(dest, parents, 0, route);
+            route.remove(0);
+            route.add(dest);
+            return route;
+        }
+    }
+
+    private static void getPath(int vertex, int[] route, int index, ArrayList<Integer> routePath) {
+        index++;
+        if (vertex == -1) {
+            return;
+        } else {
+            getPath(vertex, route, index, routePath);
+            routePath.add(route[vertex]);
+        }
     }
 }

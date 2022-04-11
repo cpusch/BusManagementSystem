@@ -91,8 +91,7 @@ public class Trip {
 
     @Override
     public String toString() {
-        return getID() + "    " + getArrivalTime() + "    " + getDepartureTime() + "    " +
-                getStopID() + "    " + getStopHeadsign() + "    " + getPickupType() + "    " +
-                getDropOffType() + "    " + getShapeDistTraveled();
+        return getID() + "      " + getArrivalTime() + "        " + getDepartureTime() + "     " +
+                getStopID() + "      " + getPickupType() + "      " + getShapeDistTraveled();
     }
 }

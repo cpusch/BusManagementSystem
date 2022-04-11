@@ -168,7 +168,7 @@ public class Main {
 
             System.out.println("Following trips found for inputted time:");
             System.out.println(
-                    "TripID      Arrival Time        Departure Time      StopID      Stop Sequence   Pickup Type     Shape Dist Traveled");
+                    "TripID      Arrival Time        Departure Time      StopID      Pickup Type      Shape Dist Traveled");
             for (Trip t : trips) {
                 System.out.println(t.toString());
             }
